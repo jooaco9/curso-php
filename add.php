@@ -1,3 +1,29 @@
+<?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $contact = [
+      "name" => $_POST["name"],
+      "phone_number" => $_POST["phone_number"]
+    ];
+
+    // Leer contactos existentes
+    $contacts = [];
+    if (file_exists("contacts.json")) {
+      $contacts = json_decode(file_get_contents("contacts.json"), true);
+    }
+
+    // Añadir nuevo contacto
+    $contacts[] = $contact;
+
+    // Guardar nuevo contacto
+    file_put_contents("contacts.json", json_encode($contacts));
+
+    // Redirigir a index.php
+    header("Location: index.php");
+    exit();
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +45,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand font-weight-bold" href="#">
+      <a class="navbar-brand font-weight-bold" href="index.php">
         <img class="mr-2" src="./static/img/logo.png" />
         ContactsApp
       </a>
@@ -54,7 +80,7 @@
           <div class="card">
             <div class="card-header">Add New Contact</div>
             <div class="card-body">
-              <form>
+              <form method="POST" action="add.php">
                 <div class="mb-3 row">
                   <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
     
