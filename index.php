@@ -1,9 +1,9 @@
 <?php
-require "db.php";
+  require "db.php";
 
-// Ejecutar la consulta y obtener los resultados como un array
-$stmt = $conn->query("SELECT * FROM contacts");
-$contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  // Ejecutar la consulta y obtener los resultados como un array
+  $stmt = $conn->query("SELECT * FROM contacts");
+  $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
