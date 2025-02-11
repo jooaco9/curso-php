@@ -1,8 +1,10 @@
 <?php
-  $contacts = [];
-  if (file_exists("contacts.json")) {
-    $contacts = json_decode(file_get_contents("contacts.json"), true);
-  }
+require "db.php";
+
+// Ejecutar la consulta y obtener los resultados como un array
+$stmt = $conn->query("SELECT * FROM contacts");
+$contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
