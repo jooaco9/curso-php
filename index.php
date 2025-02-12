@@ -3,6 +3,8 @@
 
   // Ejecutar la consulta y obtener los resultados como un array
   $stmt = $conn->query("SELECT * FROM contacts");
+
+  // Array asociativo
   $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
