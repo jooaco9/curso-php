@@ -12,12 +12,12 @@
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
 
-      // Añadir nuevo contacto
-      $stmt = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES (:name, :phoneNumber)");
+      // Peraramos la sentencia sql
+      $stmt = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES (:name, :phone_number)");
 
       // Control de inyecciones sql
-      $stmt->bindParam(":name", $_POST["name"]);
-      $stmt->bindParam(":phone_number", $_POST["phone_number"]);
+      $stmt->bindParam(":name", $name);
+      $stmt->bindParam(":phone_number", $phoneNumber);
 
       // Ejecucion de la sentencia sql
       $stmt->execute();
