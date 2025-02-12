@@ -4,7 +4,7 @@
   // Ejecutar la consulta y obtener los resultados como un array
   $stmt = $conn->query("SELECT * FROM contacts");
 
-  // Array asociativo
+  // Array asociativo para recorrer los campos
   $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
