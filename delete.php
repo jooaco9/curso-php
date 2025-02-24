@@ -23,4 +23,4 @@ $stmt->bindParam(":id", $contactId);
 // Ejecucion de la sentencia sql
 $stmt->execute();
 
-header("Location: index.php");
+header("Location: home.php");
