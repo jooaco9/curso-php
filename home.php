@@ -1,6 +1,14 @@
 <?php
   require "db.php";
 
+  // Inicio de la session, entonces si existe la session la toma
+  session_start();
+
+  if (!isset($_SESSION["user"])) {
+    header("Location: login.php");
+    return;
+  }
+
   // Ejecutar la consulta y obtener los resultados como un array
   $stmt = $conn->query("SELECT * FROM contacts");
 

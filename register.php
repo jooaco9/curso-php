@@ -23,6 +23,18 @@
         // Debemos hashear la password para que no quede en texto plano en la db
         $conn->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)")->execute([":name" => $name, ":email" => $email, ":password" => password_hash($pass, PASSWORD_BCRYPT)]);
 
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+        $stmt->bindParam(":email", $email);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Iniciamos la session
+        session_start();
+        unset($user["password"]);
+
+        $_SESSION["user"] = $user;
+
         header("Location: home.php");
       }
     }
