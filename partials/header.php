@@ -24,7 +24,7 @@
   <title>Contacts App</title>
 </head>
   <body>
-    <?php require "partials/navbar.php" ?>
+    <?php require "navbar.php" ?>
     <main>
     
     <!-- Contenido -->

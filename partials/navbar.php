@@ -17,12 +17,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+          <?php 
+            $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+            if ($uri == "/contacts-app/" || $uri == "/contacts-app/index.php"):
+          ?>
+            <li class="nav-item">
+              <a class="nav-link" href="register.php">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Login</a>
+            </li>
+          <?php else: ?>
             <li class="nav-item">
               <a class="nav-link" href="/contacts-app/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contacts-app/add.php">Add Contact</a>
             </li>
+          <?php endif; ?>
           </ul>
         </div>
       </div>
