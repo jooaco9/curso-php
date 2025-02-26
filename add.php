@@ -32,9 +32,11 @@
       // Ejecucion de la sentencia sql
       $stmt->execute();
 
+      $_SESSION["flash"] = ["message" => "Conctac $name added."];
+
       // Redirigir a home.php
       header("Location: home.php");
-      exit();
+      return;
     }
   }
 ?>

@@ -40,4 +40,7 @@ $stmt->bindParam(":id", $contactId);
 // Ejecucion de la sentencia sql
 $stmt->execute();
 
+$_SESSION["flash"] = ["message" => "Conctac {$contact["name"]} deleted.", "type" => "danger"];
+
 header("Location: home.php");
+return;
