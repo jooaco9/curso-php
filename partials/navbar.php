@@ -43,6 +43,9 @@
                 <a class="nav-link" href="/contacts-app/add.php">Add Contact</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="/contacts-app/newAdress.php">Add Adress</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
               </li>
             <?php endif ?>

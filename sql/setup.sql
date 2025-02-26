@@ -18,3 +18,10 @@ CREATE TABLE contacts (
   phone_number VARCHAR(255),
   FOREIGN KEY (user_id) REFERENCES users(id) 
 );
+
+CREATE TABLE adress (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  adress VARCHAR(255),
+  contact_id INT NOT NULL,
+  FOREIGN KEY (contact_id) REFERENCES contacts(id)
+);
