@@ -12,13 +12,22 @@ if (!isset($_SESSION["user"])) {
 $contactId = $_GET["id"];
 
 // Verificacion de si existe un usuario con ese id
-$stmt = $conn->prepare("SELECT * FROM contacts WHERE id=:id;");
+$stmt = $conn->prepare("SELECT * FROM contacts WHERE id=:id LIMIT 1;");
 $stmt->bindParam(":id", $contactId);
 $stmt->execute();
 
 if ($stmt->rowCount() == 0) {
   http_response_code(404);
   echo("HTTP 404 NOT FOUND");
+  return;
+}
+
+$contact = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Verificacion de que el usuario logueado sea el que puede borrar
+if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
+  http_response_code(403);
+  echo("GTTP 403 UNAUTHORIZED");
   return;
 }
 
