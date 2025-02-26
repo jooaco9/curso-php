@@ -29,10 +29,16 @@
     } else {
 
       // Obtener el nombre del contacto seleccionado
-      $stmt = $conn->prepare("SELECT name FROM contacts WHERE id = :id");
+      $stmt = $conn->prepare("SELECT * FROM contacts WHERE id = :id");
       $stmt->bindParam(":id", $contactId);
       $stmt->execute();
       $contact = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
+        http_response_code(403);
+        echo("GTTP 403 UNAUTHORIZED");
+        return;
+      }
 
       // Peraramos la sentencia sql
       $stmt = $conn->prepare("INSERT INTO adress (adress, contact_id) VALUES (:adress, :contact_id)");
