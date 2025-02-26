@@ -9,8 +9,10 @@
     return;
   }
 
+  $userId = $_SESSION["user"]["id"];
+
   // Ejecutar la consulta y obtener los resultados como un array
-  $stmt = $conn->query("SELECT * FROM contacts");
+  $stmt = $conn->query("SELECT * FROM contacts WHERE user_id = $userId");
 
   // Array asociativo para recorrer los campos
   $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);

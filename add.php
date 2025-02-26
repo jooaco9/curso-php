@@ -19,13 +19,15 @@
     } else {
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
+      $userId = $_SESSION["user"]["id"];
 
       // Peraramos la sentencia sql
-      $stmt = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES (:name, :phone_number)");
+      $stmt = $conn->prepare("INSERT INTO contacts (name, phone_number, user_id) VALUES (:name, :phone_number, :user_id)");
 
       // Control de inyecciones sql
       $stmt->bindParam(":name", $name);
       $stmt->bindParam(":phone_number", $phoneNumber);
+      $stmt->bindParam(":user_id", $userId);
 
       // Ejecucion de la sentencia sql
       $stmt->execute();
