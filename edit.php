@@ -69,7 +69,7 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
-            <div class="card-header">Add New Contact</div>
+            <div class="card-header">Edit Contact</div>
             <div class="card-body">
               <?php if ($error): ?>
                 <p class="text-danger">
@@ -81,7 +81,7 @@
                   <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
     
                   <div class="col-md-6">
-                    <input value=<?php echo $contact["name"]; ?> id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus>
+                    <input value="<?php echo $contact["name"]; ?>" id="name" type="text" class="form-control" name="name" autocomplete="name" autofocus>
                   </div>
                 </div>
     
@@ -89,7 +89,7 @@
                   <label for="phone_number" class="col-md-4 col-form-label text-md-end">Phone Number</label>
     
                   <div class="col-md-6">
-                    <input value=<?php echo $contact["phone_number"]; ?> id="phone_number" type="tel" class="form-control" name="phone_number" autocomplete="phone_number" autofocus>
+                    <input value="<?php echo $contact["phone_number"]; ?>" id="phone_number" type="tel" class="form-control" name="phone_number" autocomplete="phone_number" autofocus>
                   </div>
                 </div>
     

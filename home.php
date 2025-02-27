@@ -58,10 +58,15 @@
                 </ul>
               </div>
  
-              <div class="d-flex justify-content-between mt-2"> 
+              <div class="d-flex justify-content-between mb-2">
                 <a href="edit.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit</a> 
-                <a href="delete.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete</a> 
-              </div> 
+                <a href="delete.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Contact</a> 
+              </div>
+              <div class="d-flex justify-content-between">
+                <a href="editAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Adresses</a> 
+                <a href="deleteAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Adress</a> 
+              </div>
+
             </div> 
           </div> 
         </div> 
