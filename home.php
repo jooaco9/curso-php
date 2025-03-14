@@ -33,7 +33,7 @@
  
       <?php foreach ($contacts as $contact): ?> 
         <div class="col-md-5 col-lg-4 mb-4"> <!-- Cambiado de col-md-6 a col-md-5 col-lg-4 para hacer las cards más pequeñas -->
-          <div class="card shadow-sm" style="max-width: 320px;"> <!-- Añadido max-width para limitar el tamaño -->
+          <div class="card mx-auto shadow-sm" style="max-width: 320px;"> <!-- Añadido max-width para limitar el tamaño -->
             <div class="card-body p-3"> <!-- Padding reducido de p-4 a p-3 -->
               <h3 class="card-title text-capitalize fs-4"><?php echo $contact["name"]; ?></h3> <!-- Reducción de tamaño del título -->
               <p class="text-muted mb-2"><?php echo $contact["phone_number"]; ?></p> 
@@ -59,7 +59,7 @@
               </div>
  
               <div class="d-flex justify-content-between mb-2">
-                <a href="edit.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit</a> 
+                <a href="edit.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Contact</a> 
                 <a href="delete.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Contact</a> 
               </div>
               <div class="d-flex justify-content-between">
