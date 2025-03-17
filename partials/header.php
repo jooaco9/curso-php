@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/darkly/bootstrap.min.css" integrity="sha512-HDszXqSUU0om4Yj5dZOUNmtwXGWDa5ppESlX98yzbBS+z+3HQ8a/7kcdI1dv+jKq+1V5b01eYurE7+yFjw6Rdg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Bootstrap JS -->
   <script 
     defer
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"                   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
@@ -15,7 +16,10 @@
   <!-- Static content -->
   <link rel="stylesheet" href="static/css/index.css">
   <?php 
+    // Obtener la ruta del URI
     $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+
+    // Verificar si la ruta es la página principal
     if ($uri == "/contacts-app/" || $uri == "/contacts-app/index.php"):
   ?>
     <!-- defer es para que el js se cargue una vez que se haya cargado todo el html -->
@@ -25,7 +29,10 @@
 </head>
   <body>
     <?php require "navbar.php" ?>
-      <?php if (isset($_SESSION["flash"])): ?>
+      <?php 
+        // Si esta seteado el msj flash se muestra el mismo
+        if (isset($_SESSION["flash"])): 
+      ?>
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>

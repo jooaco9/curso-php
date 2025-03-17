@@ -24,14 +24,14 @@ if ($stmt->rowCount() == 0) {
 
 $contact = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Verificacion de que el usuario logueado sea el que puede borrar
+// Verificacion de que el usuario logueado sea el que puede borrar al contacto
 if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
   http_response_code(403);
   echo("GTTP 403 UNAUTHORIZED");
   return;
 }
 
-// Peraramos la sentencia sql
+// Preparamos la sentencia sql
 $stmt = $conn->prepare("DELETE FROM contacts WHERE id=:id;");
 
 // Control de inyecciones sql

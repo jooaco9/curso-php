@@ -35,6 +35,7 @@ if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
 
 $error = null;
 
+// Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $totalAdresses = $_POST["adresses"];
   $empty = false;
@@ -78,13 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="card">
         <div class="card-header">Edit Adress Contact</div>
         <div class="card-body">
+          <!-- Mostrar mensaje de error si existe -->
           <?php if ($error): ?>
             <p class="text-danger">
               <?php echo $error; ?>
             </p>
           <?php endif ?>
+
+          <!-- Formulario para editar direcciones -->
           <form method="POST" action="editAdresses.php?id=<?php echo $contactId; ?>">
             <?php 
+              // Obtener todas las direcciones del contacto
               $stmt = $conn->query("SELECT * FROM adress WHERE contact_id = {$contact["id"]}");
               if ($stmt->rowCount() == 0):
             ?>
@@ -99,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="mb-3 row">
                   <label for="adress<?php echo $adress["id"]; ?>" class="col-md-4 col-form-label text-md-end">Adress</label>
                   <div class="col-md-6">
+                    <!-- Con lo que esta puesto en name, hace que al enviarselo a PHP cree un array asociativo con el id de la adress como clave y el valor de adress asociado a esa clave -->
                     <input value="<?php echo $adress["adress"]; ?>" id="adress<?php echo $adress["id"]; ?>" type="text" class="form-control" name="adresses[<?php echo $adress["id"]; ?>]" autocomplete="off" autofocus>
                   </div>
                 </div>

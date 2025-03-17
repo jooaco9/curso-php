@@ -4,6 +4,7 @@
   // Inicio de la session, entonces si existe la session la toma
   session_start();
 
+  // Redirigir al login si el usuario no está autenticado
   if (!isset($_SESSION["user"])) {
     header("Location: login.php");
     return;
@@ -11,7 +12,9 @@
 
   $error = null;
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Pequeñas validaciones
     if (empty($_POST["name"]) || empty($_POST["phone_number"])) {
       $error = "Please fill all fields.";
     } else if (strlen($_POST["phone_number"]) < 9) {
@@ -48,11 +51,14 @@
           <div class="card">
             <div class="card-header">Add New Contact</div>
             <div class="card-body">
+              <!-- Mostrar mensaje de error si existe -->
               <?php if ($error): ?>
                 <p class="text-danger">
                   <?php echo $error; ?>
                 </p>
               <?php endif ?>
+
+              <!-- Formulario para agregar un nuevo contacto -->
               <form method="POST" action="add.php">
                 <div class="mb-3 row">
                   <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>

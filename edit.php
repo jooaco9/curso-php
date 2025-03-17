@@ -4,6 +4,7 @@
   // Inicio de la session, entonces si existe la session la toma
   session_start();
 
+  // Redirigir al login si el usuario no está autenticado
   if (!isset($_SESSION["user"])) {
     header("Location: login.php");
     return;
@@ -35,7 +36,9 @@
 
   $error = null;
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Pequeñas validaciones
     if (empty($_POST["name"]) || empty($_POST["phone_number"])) {
       $error = "Please fill all fields.";
     } else if (strlen($_POST["phone_number"]) < 9) {
@@ -44,7 +47,7 @@
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
 
-      // Peraramos la sentencia sql para hacer el update
+      // Preparar la sentencia sql para hacer el update
       $stmt = $conn->prepare("UPDATE contacts SET name = :name, phone_number = :phone_number WHERE id = :id;");
 
       // Control de inyecciones sql
@@ -71,11 +74,14 @@
           <div class="card">
             <div class="card-header">Edit Contact</div>
             <div class="card-body">
+              <!-- Mostrar mensaje de error si existe -->
               <?php if ($error): ?>
                 <p class="text-danger">
                   <?php echo $error; ?>
                 </p>
               <?php endif ?>
+
+              <!-- Formulario para editar un contacto -->
               <form method="POST" action="edit.php?id=<?php echo $contact["id"]; ?>">
                 <div class="mb-3 row">
                   <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>

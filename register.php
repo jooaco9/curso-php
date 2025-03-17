@@ -3,26 +3,32 @@
 
   $error = null;
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $pass = $_POST["password"];
 
+    // Pequeñas validaciones
     if (empty($name) || empty($email) || empty($pass)) {
       $error = "Please fill all the fields.";
+    // Formato email
     } else if (!str_contains($_POST["email"], "@")) {
       $error = "Email format is incorrect.";
     } else {
+      // Preparar la consulta SQL para buscar el usuario por email
       $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
       $stmt->bindParam(":email", $email);
       $stmt->execute();
 
+      // Verificar si el email ya está registrado
       if ($stmt->rowCount() > 0) {
         $error = "This email is taken.";
       } else {
         // Debemos hashear la password para que no quede en texto plano en la db
         $conn->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)")->execute([":name" => $name, ":email" => $email, ":password" => password_hash($pass, PASSWORD_BCRYPT)]);
 
+        // Obtener el usuario recién registrado
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
         $stmt->bindParam(":email", $email);
         $stmt->execute();
@@ -33,6 +39,7 @@
         session_start();
         unset($user["password"]);
 
+        // Guardar el usuario en la sesión
         $_SESSION["user"] = $user;
 
         header("Location: home.php");
@@ -48,11 +55,14 @@
           <div class="card">
             <div class="card-header">Register</div>
             <div class="card-body">
+              <!-- Mostrar mensaje de error si existe -->
               <?php if ($error): ?>
                 <p class="text-danger">
                   <?php echo $error; ?>
                 </p>
               <?php endif ?>
+
+              <!-- Formulario de registro -->
               <form method="POST" action="register.php">
                 <div class="mb-3 row">
                   <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>

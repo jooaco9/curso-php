@@ -16,7 +16,7 @@
 
         <!-- Boton burger para mobile -->
         <button
-          class="navbar-toggler"
+          class="navbar-toggler" 
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -24,7 +24,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span> <!-- Icono del botón burger -->
         </button>
 
         <!-- Contenido colapsable -->

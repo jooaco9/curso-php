@@ -28,7 +28,9 @@
     return;
   }
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener el ID de la dirección desde la URL
     $idAdress = $_GET["id_adress"];
 
     // Borrar direccion
@@ -53,6 +55,7 @@
             <div class="card-header">Edit Adress Contact</div>
             <div class="card-body">
             <?php 
+              // Obtener todas las direcciones del contacto
               $stmt = $conn->query("SELECT * FROM adress WHERE contact_id = {$contact["id"]}");
               if ($stmt->rowCount() == 0):
             ?>
@@ -67,6 +70,8 @@
                 foreach ($adresses as $adress):
                   $cont++
               ?>
+
+              <!-- Formulario para borrar una dirección -->
               <form method="POST" action="deleteAdresses.php?id=<?php echo $contactId; ?>&id_adress=<?php echo $adress["id"]?>">
                 <div class="mb-3 row">
                   <label for="adress" class="col-md-4 col-form-label text-md-end">Adress</label>

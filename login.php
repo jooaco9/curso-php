@@ -6,15 +6,18 @@
 
   $error = null;
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $pass = $_POST["password"];
 
+    // Pequeñas validaciones 
     if (empty($email) || empty($pass)) {
       $error = "Please fill all the fields.";
     } else if (!str_contains($_POST["email"], "@")) {
       $error = "Email format is incorrect.";
     } else {
+      // Preparar la consulta SQL para buscar el usuario por email
       $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
       $stmt->bindParam(":email", $email);
       $stmt->execute();
@@ -24,6 +27,7 @@
         $error = "Invalid credentials.";
       } else {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Verificar la contraseña
         if (!password_verify($pass, $user["password"])) {
           $error = "Invalid credentials.";
         } else {
@@ -50,11 +54,14 @@
           <div class="card">
             <div class="card-header">Login</div>
             <div class="card-body">
+              <!-- Mostrar mensaje de error si existe -->
               <?php if ($error): ?>
                 <p class="text-danger">
                   <?php echo $error; ?>
                 </p>
               <?php endif ?>
+
+               <!-- Formulario de login -->
               <form method="POST" action="login.php">
     
                 <div class="mb-3 row">

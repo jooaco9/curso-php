@@ -4,6 +4,7 @@
   // Inicio de la session, entonces si existe la session la toma
   session_start();
 
+  // Redirigir al login si el usuario no está autenticado
   if (!isset($_SESSION["user"])) {
     header("Location: login.php");
     return;
@@ -11,6 +12,7 @@
   
   $userId = $_SESSION["user"]["id"];
 
+  // Obtener todos los contactos del usuario autenticado
   $stmt = $conn->query("SELECT * FROM contacts WHERE user_id = $userId");
 
   // Array asociativo para recorrer los campos
@@ -18,6 +20,7 @@
 
   $error = null;
 
+  // Verificar si el formulario fue enviado
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $adress = $_POST["adress"];
@@ -34,6 +37,7 @@
       $stmt->execute();
       $contact = $stmt->fetch(PDO::FETCH_ASSOC);
 
+      // Verificación para que no se pueda agregar una dirección a un contacto de otro usuario
       if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
         http_response_code(403);
         echo("GTTP 403 UNAUTHORIZED");
@@ -66,11 +70,14 @@
           <div class="card">
             <div class="card-header">Add New Adress for a Conctact</div>
             <div class="card-body">
+              <!-- Mostrar mensaje de error si existe -->
               <?php if ($error): ?>
                 <p class="text-danger">
                   <?php echo $error; ?>
                 </p>
               <?php endif ?>
+
+              <!-- Formulario para agregar una nueva dirección -->
               <form method="POST" action="newAdress.php">
                   <div class="mb-3 row">
                     <label for="adress" class="col-md-4 col-form-label text-md-end">Adress</label>
