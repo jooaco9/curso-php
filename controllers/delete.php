@@ -1,11 +1,11 @@
 <?php
-require "db.php";
+require "../config/db.php";
 
 // Inicio de la session, entonces si existe la session la toma
 session_start();
 
 if (!isset($_SESSION["user"])) {
-  header("Location: login.php");
+  header("Location: ../auth/login.php");
   return;
 }
 
@@ -42,5 +42,5 @@ $stmt->execute();
 
 $_SESSION["flash"] = ["message" => "Conctac {$contact["name"]} deleted."];
 
-header("Location: home.php");
+header("Location: ../views/home.php");
 return;

@@ -1,8 +1,14 @@
 <?php
-  require "db.php";
+  require "../config/db.php";
 
   // Inicio de la session, entonces si existe la session la toma
   session_start();
+
+  // Redirigir al login si el usuario no está autenticado
+  if (!isset($_SESSION["user"])) {
+    header("Location: ../auth/login.php");
+    return;
+  }
 
   $contactId = $_GET["id"];
 
@@ -47,7 +53,7 @@
   }
 ?>
 
-<?php require "partials/header.php" ?>
+<?php require "../partials/header.php" ?>
     <div class="container pt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -92,4 +98,4 @@
         </div>
       </div>
     </div>
-<?php require "partials/footer.php" ?>
+<?php require "../partials/footer.php" ?>

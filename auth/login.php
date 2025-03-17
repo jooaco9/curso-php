@@ -1,5 +1,5 @@
 <?php
-  require "db.php";
+  require "../config/db.php";
 
   // Inicio de la session, entonces si existe la session la toma
   session_start();
@@ -40,14 +40,14 @@
           // Guardamos lo que queremos en la session
           $_SESSION["user"] = $user;
 
-          header("Location: home.php");
+          header("Location: ../views/home.php");
         }
       }
     }
   }
 ?>
 
-<?php require "partials/header.php" ?>
+<?php require "../partials/header.php" ?>
     <div class="container pt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -91,4 +91,4 @@
         </div>
       </div>
     </div>
-<?php require "partials/footer.php" ?>
+<?php require "../partials/footer.php" ?>

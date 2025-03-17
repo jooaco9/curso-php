@@ -1,11 +1,11 @@
 <?php
-  require "db.php";
+  require "../config/db.php";
 
   // Inicio de la session, entonces si existe la session la toma
   session_start();
 
   if (!isset($_SESSION["user"])) {
-    header("Location: login.php");
+    header("Location: ../auth/login.php");
     return;
   }
 
@@ -19,7 +19,7 @@
 
 ?>
 
-<?php require "partials/header.php" ?> 
+<?php require "../partials/header.php" ?> 
   <div class="container pt-4 p-3"> 
     <div class="row justify-content-center" id="contacts-container"> 
       <?php if (count($contacts) == 0): ?> 
@@ -85,6 +85,6 @@
   </div> 
 
   <!-- JS para las busquedas -->
-  <script src="static/js/search-contacts.js"></script>
+  <script src="../static/js/search-contacts.js"></script>
   
-<?php require "partials/footer.php" ?>
+<?php require "../partials/footer.php" ?>

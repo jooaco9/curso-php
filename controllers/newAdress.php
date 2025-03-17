@@ -1,12 +1,12 @@
 <?php
-  require "db.php";
+  require "../config/db.php";
 
   // Inicio de la session, entonces si existe la session la toma
   session_start();
 
   // Redirigir al login si el usuario no está autenticado
   if (!isset($_SESSION["user"])) {
-    header("Location: login.php");
+    header("Location: ../auth/login.php");
     return;
   }
   
@@ -57,13 +57,13 @@
       $_SESSION["flash"] = ["message" => "Adress for {$contact["name"]} added."];
 
       // Redirigir a home.php
-      header("Location: home.php");
+      header("Location: ../views/home.php");
       return;
     }
   }
 ?>
 
-<?php require "partials/header.php" ?>
+<?php require "../partials/header.php" ?>
     <div class="container pt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -110,4 +110,4 @@
         </div>
       </div>
     </div>
-<?php require "partials/footer.php" ?>
+<?php require "../partials/footer.php" ?>
