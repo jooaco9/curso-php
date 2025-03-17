@@ -26,7 +26,7 @@
         <div class="col-md-4 mx-auto"> 
           <div class="card card-body text-center"> 
             <p>No contacts saved yet</p> 
-            <a href="add.php" class="btn btn-primary">Add One!</a> 
+            <a href="../controllers/add.php" class="btn btn-primary">Add One!</a> 
           </div> 
         </div> 
       <?php endif ?> 
@@ -63,18 +63,18 @@
               <div class="d-flex justify-content-between mb-2">
 
                 <!-- Enlace para editar el contacto -->
-                <a href="edit.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Contact</a> 
+                <a href="../controllers/edit.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Contact</a> 
 
                 <!-- Enlace para eliminar el contacto -->
-                <a href="delete.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Contact</a> 
+                <a href="../controllers/delete.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Contact</a> 
               </div>
               <div class="d-flex justify-content-between">
 
                 <!-- Enlace para editar las direcciones del contacto -->
-                <a href="editAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Adresses</a> 
+                <a href="../controllers/editAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-primary">Edit Adresses</a> 
 
                 <!-- Enlace para eliminar las direcciones del contacto -->
-                <a href="deleteAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Adress</a> 
+                <a href="../controllers/deleteAdresses.php?id=<?php echo $contact["id"]; ?>" class="btn btn-sm btn-outline-danger">Delete Adress</a> 
               </div>
 
             </div> 

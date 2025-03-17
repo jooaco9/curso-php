@@ -1,4 +1,8 @@
 <?php 
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require "../config/db.php";
 
 // Inicio de session
@@ -29,7 +33,6 @@ if (!empty($searchTerm)) {
 $stmt = $conn->prepare($query);
 $stmt->execute($params);
 $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 
 // Obtener direcciones para cada contacto
 foreach ($contacts as &$contact) {

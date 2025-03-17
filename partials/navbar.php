@@ -1,18 +1,23 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <!-- Logo y nombre de la app -->
-        <a class="navbar-brand font-weight-bold" 
         <?php 
           if (!isset($_SESSION["user"])):
         ?>
+        <a class="navbar-brand font-weight-bold" 
           href="/contacts-app/"
-        <?php else: ?>
-          href="/contacts-app/home.php"
-        <?php endif ?>
         >
-          <img class="mr-2" src="./static/img/logo.png" />
+          <img class="mr-2" src="./static/img/logo.png" style="width: 20px" />
           ContactsApp
         </a>
+        <?php else: ?>
+        <a class="navbar-brand font-weight-bold" 
+          href="/contacts-app/views/home.php"
+        >
+          <img class="mr-2" src="../static/img/logo.png" style="width: 20px" />
+          ContactsApp
+        </a>
+        <?php endif ?>
 
         <!-- Boton burger para mobile -->
         <button
@@ -34,23 +39,23 @@
             if (!isset($_SESSION["user"])):
           ?>
             <li class="nav-item">
-              <a class="nav-link" href="register.php">Register</a>
+              <a class="nav-link" href="auth/register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
+              <a class="nav-link" href="auth/login.php">Login</a>
             </li>
           <?php else: ?>
             <li class="nav-item">
-              <a class="nav-link" href="/contacts-app/home.php">Home</a>
+              <a class="nav-link" href="/contacts-app/views/home.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contacts-app/add.php">Add Contact</a>
+              <a class="nav-link" href="/contacts-app/controllers/add.php">Add Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contacts-app/newAdress.php">Add Adress</a>
+              <a class="nav-link" href="/contacts-app/controllers/newAdress.php">Add Adress</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="logout.php">Logout</a>
+              <a class="nav-link" href="/contacts-app/auth/logout.php">Logout</a>
             </li>
           <?php endif ?>
           </ul>

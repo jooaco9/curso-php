@@ -31,6 +31,11 @@ if ($contact["user_id"] !== $_SESSION["user"]["id"]) {
   return;
 }
 
+// Borramos primero las direcciones asociadas al contacto a borrar
+$stmt = $conn->prepare("DELETE FROM adress WHERE contact_id=:contact_id");
+$stmt->bindParam(":contact_id", $contactId);
+$stmt->execute();
+
 // Preparamos la sentencia sql
 $stmt = $conn->prepare("DELETE FROM contacts WHERE id=:id;");
 

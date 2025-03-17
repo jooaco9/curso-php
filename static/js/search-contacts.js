@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const searchTerm = searchInput.value.trim();
         
         // Realizar la solicitud AJAX
-        fetch(`../../api/search.php?term=${encodeURIComponent(searchTerm)}`)
+        fetch(`../api/search.php?term=${encodeURIComponent(searchTerm)}`)
           .then(response => response.json())
           .then(contacts => {
             updateContactsList(contacts);

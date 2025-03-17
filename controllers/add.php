@@ -38,7 +38,7 @@
       $_SESSION["flash"] = ["message" => "Conctac $name added."];
 
       // Redirigir a home.php
-      header("Location: home.php");
+      header("Location: ../views/home.php");
       return;
     }
   }
