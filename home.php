@@ -21,7 +21,7 @@
 
 <?php require "partials/header.php" ?> 
   <div class="container pt-4 p-3"> 
-    <div class="row justify-content-center"> 
+    <div class="row justify-content-center" id="contacts-container"> 
       <?php if (count($contacts) == 0): ?> 
         <div class="col-md-4 mx-auto"> 
           <div class="card card-body text-center"> 
@@ -73,4 +73,8 @@
       <?php endforeach ?> 
     </div> 
   </div> 
+
+  <!-- Incluir el archivo JavaScript separado -->
+  <script src="static/js/search-contacts.js"></script>
+  
 <?php require "partials/footer.php" ?>
