@@ -57,16 +57,24 @@
 
           <?php if (isset($_SESSION["user"])): ?>
             <div class="d-flex flex-column flex-lg-row align-items-lg-center">
-              <!-- Email del usuario (primero en móvil) -->
+              <!-- Email del usuario -->
               <div class="navbar-text text-light order-1 order-lg-2 mb-2 mb-lg-0">
                 <?= $_SESSION["user"]["email"]; ?>
               </div>
 
-              <!-- Barra de busqueda (segundo en móvil) -->
-              <form id="searchForm" class=" d-flex order-2 order-lg-1 mt-2 mt-lg-0 me-lg-3" role="search" method="GET" action="/contacts-app/search.php">
-                <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <!-- Barra de búsqueda -->
+            <?php 
+            // Obtener el nombre del script actual
+            $currentPage = basename($_SERVER["PHP_SELF"]);
+
+            // Solo mostrar la busqueda en el home
+            if($currentPage === "home.php"):
+            ?>
+              <!-- segundo en móvil con las clases de order -->
+              <form id="searchForm" class=" d-flex order-2 order-lg-1 mt-2 mt-lg-0 me-lg-3" role="search">
+                <input id="search-input" class="form-control me-2" type="text" placeholder="Search contacts..." aria-label="Search" autocomplete="">
               </form>
+            <?php endif; ?>
             </div>
           <?php endif ?>
         </div>
