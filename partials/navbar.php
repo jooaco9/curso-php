@@ -7,7 +7,7 @@
         <a class="navbar-brand font-weight-bold" 
           href="/contacts-app/"
         >
-          <img class="mr-2" src="./static/img/logo.png" style="width: 20px" />
+          <img class="mr-2" src="/contacts-app/static/img/logo.png" style="width: 20px" />
           ContactsApp
         </a>
         <?php else: ?>
@@ -39,17 +39,17 @@
             if (!isset($_SESSION["user"])):
           ?>
             <li class="nav-item">
-              <a class="nav-link" href="auth/register.php">Register</a>
+              <a class="nav-link" href="/contacts-app/auth/register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="auth/login.php">Login</a>
+              <a class="nav-link" href="/contacts-app/auth/login.php">Login</a>
             </li>
           <?php else: ?>
             <li class="nav-item">
               <a class="nav-link" href="/contacts-app/views/home.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contacts-app/views/favs.php">Favs</a>
+              <a class="nav-link" href="/contacts-app/views/favorites.php">Favs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/contacts-app/controllers/add.php">Add Contact</a>
@@ -76,7 +76,7 @@
             $currentPage = basename($_SERVER["PHP_SELF"]);
 
             // Solo mostrar la busqueda en el home
-            if($currentPage === "home.php"):
+            if($currentPage === "home.php" || $currentPage === "favorites.php"):
             ?>
               <!-- segundo en móvil con las clases de order -->
               <form id="searchForm" class=" d-flex order-2 order-lg-1 mt-2 mt-lg-0 me-lg-3" role="search">
