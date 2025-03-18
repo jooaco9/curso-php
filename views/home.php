@@ -33,8 +33,14 @@
  
       <?php foreach ($contacts as $contact): ?> 
         <div class="col-md-5 col-lg-4 mb-4"> 
-          <div class="card mx-auto shadow-sm" style="max-width: 320px;"> 
-            <div class="card-body p-3"> 
+          <div class="card mx-auto shadow-sm position-relative" style="max-width: 320px;"> 
+              <!-- Icono de favoritos -->
+              <div class="position-absolute" style="top: 16px; right: 22px;">
+                <button id="fav-btn-<?php echo $contacto['id']; ?>" class="btn btn-sm text-warning border-0 p-0 favorite-btn" data-contact-id="<?php echo $contacto['id']; ?>">
+                  <i class="bi <?php echo ($contacto['favorito'] == 1) ? 'bi-star-fill' : 'bi-star'; ?> fs-5"></i> 
+                </button>
+              </div>
+              <div class="card-body p-3"> 
               <h3 class="card-title text-capitalize fs-4"><?php echo $contact["name"]; ?></h3> 
               <p class="text-muted mb-2"><?php echo $contact["phone_number"]; ?></p> 
  

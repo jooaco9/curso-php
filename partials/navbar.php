@@ -49,6 +49,9 @@
               <a class="nav-link" href="/contacts-app/views/home.php">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/contacts-app/views/favs.php">Favs</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/contacts-app/controllers/add.php">Add Contact</a>
             </li>
             <li class="nav-item">
