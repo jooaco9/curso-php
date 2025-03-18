@@ -1,8 +1,4 @@
 <?php 
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require "../config/db.php";
 
 // Inicio de session
@@ -17,11 +13,18 @@ if (!isset($_SESSION["user"])) {
 }
 
 $userId = $_SESSION["user"]["id"];
+
+// Tomo los parametros del GET
 $searchTerm = isset($_GET["term"]) ? $_GET["term"]: "";
+$favorite = isset($_GET["favorite"]) ? true : false;
 
 // Preparar consulta con protección contra SQL Injection
 $query = "SELECT * FROM contacts WHERE user_id = :userId";
 $params = [":userId" => $userId];
+
+if($favorite) {
+  $query .= " AND favorite = 1";
+}
 
 // Añadir filtro de búsqueda si hay término
 if (!empty($searchTerm)) {
