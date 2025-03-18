@@ -87,8 +87,6 @@ function favorite(event) {
   // Nuevo estado del icono
   const isFavorite = icon.classList.contains('bi-star-fill');
   const newFavoriteStatus = isFavorite ? 0 : 1;
-  console.log("stauts", newFavoriteStatus);
-  console.log('id', contactId);
 
   const formData = new FormData();
   formData.append('contact_id', contactId);
@@ -137,8 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
       searchTimeout = setTimeout(() => {
         const searchTerm = searchInput.value.trim();
 
+        // encodeURIComponent para manejar caracteres especiales
         let searchURL = `../api/search.php?term=${encodeURIComponent(searchTerm)}`;
 
+        // Verifico que la pagina sea la de favoritos
         if (isFavoritesPage) {
           searchURL += '&favorite=1';
         }
