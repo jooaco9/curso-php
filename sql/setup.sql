@@ -16,6 +16,7 @@ CREATE TABLE contacts (
   name VARCHAR(255),
   user_id INT NOT NULL,
   phone_number VARCHAR(255),
+  favorite TINYINT(1) NOT NULL DEFAULT 0,
   FOREIGN KEY (user_id) REFERENCES users(id) 
 );
 
