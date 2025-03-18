@@ -15,7 +15,7 @@
     crossorigin="anonymous"></script>
 
   <!-- Static content -->
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="/contacts-app/static/css/index.css">
   <?php 
     // Obtener la ruta del URI
     $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
